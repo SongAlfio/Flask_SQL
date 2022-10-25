@@ -13,7 +13,7 @@ def result():
   conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', password='xxx123##', database='song.alfio')  
   # Invio Query al database e ricezione informazioni
   Nome_Prodotto = request.args['NomeProdotto']
-  query = f"Select * from Production.Products where product_name like '{Nome_Prodotto}%' inner join Production.Categories on Production.Categories.Category_ID = Production.Products.Category_ID inner join Production.Brands on Production.Brands.Brand_ID = Production.Products.Brand_ID "
+  query = f"Select * from Production.Products inner join Production.Categories on Production.Categories.Category_ID = Production.Products.Category_ID inner join Production.Brands on Production.Brands.Brand_ID = Production.Products.Brand_ID where product_name like '{Nome_Prodotto}%'"
   df_Prodotti = pd.read_sql(query,conn)
   # Visualizzare le informazione.
   df_Prodotti
