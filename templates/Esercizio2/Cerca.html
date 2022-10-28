@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <img class="col-4" src={{url}} alt="Chart" height="auto">
+            <img class="col-4" src={{url1}} alt="Chart" height="auto">
+            <img class="col-4" src={{url2}} alt="Chart" height="auto">
+        </div>
+    </div>
+    <form action="/Cerca" method="get">
+        <label for="NomeProdotto" class="form-label">Nome Del Prodotto:</label>
+        <input type="radio" name="Cerca" id="NomeProdotto" value="NomeProdotto">
+        <br>
+        <label for="NomeCategoty" class="form-label">Nome Della Categoria:</label>
+        <input type="radio" name="Cerca" id="NomeCategoty" value="NomeCategoty">
+        <br>
+        <label for="NomeNegozio" class="form-label">Nome Del Negozio:</label>
+        <input type="radio" name="Cerca" id="NomeNegozio" value="NomeNegozio">
+        <br>
+        <label for="NomeBrand" class="form-label">Nome Del Brand:</label>
+        <input type="radio" name="Cerca" id="NomeBrand" value="NomeBrand">
+        <br>
+        <input type="submit" value = "Submit">
+    </form>
+</body>
+</html>
