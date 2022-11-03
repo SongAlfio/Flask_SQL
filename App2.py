@@ -25,21 +25,23 @@ def home():
     df = pd.read_sql(query,conn)
     names = list(df['Category_Name'])
     values = list(df['Numero_Prodotti'])
-    fig1 = plt.figure(figsize=[15,15])
+    fig1 = plt.figure(figsize=[16,16])
     ax = plt.axes()
     ax.bar(names, values)
     fig1.autofmt_xdate(rotation=45) 
+    fig1.suptitle('Categorie di ogni prodotto', color='k')
     plt.savefig('static/images/plot.png')
 
     query1 = 'Select Store_Name, Count(*) as Numero_Ordini from Sales.Stores inner join Sales.Orders on Sales.Stores.Store_id = Sales.Orders.Store_id group by Sales.Orders.Store_id,Sales.Stores.Store_name order by Numero_Ordini desc'
     df1 = pd.read_sql(query1,conn)
     names = list(df1['Store_Name'])
     values = list(df1['Numero_Ordini'])
-    fig2 = plt.figure(figsize=[15,15])
+    fig2 = plt.figure(figsize=[16,16])
     ax = plt.axes()
     ax.barh(names, values)
     fig2.autofmt_xdate(rotation=0) 
     plt.yticks(rotation = 45)
+    fig2.suptitle('Numero di ordini in ogni negozio', color='k')
     plt.savefig('static/images/plot1.png')
     
     query2 = 'Select Brand_Name, Count(*) as Numero_Prodotti from Production.Products inner join Production.Brands on Production.Brands.Brand_id = Production.Products.Brand_id group by Production.Products.Brand_id,Production.Brands.Brand_name order by Numero_Prodotti desc'
@@ -47,10 +49,9 @@ def home():
     names = list(df2['Brand_Name'])
     values = list(df2['Numero_Prodotti'])
     plt.rcParams.update({'font.size': 20})    # Aumenta la grandezza del testo (Default: 10)
-    fig3 = plt.figure(figsize=[15,15])
+    fig3 = plt.figure(figsize=[16,16])
     ax = plt.axes()
     ax.pie(values, labels=names, startangle=90, autopct='%1.1f%%')#grafico a torta
-    
     fig3.suptitle('Numeri prodotti per ogni brand', color='k')
     plt.savefig('static/images/plot2.png')
     
@@ -62,7 +63,7 @@ def Cerca():
   Cerca = request.args['Cerca']
   if Cerca == 'NomeProdotto':
     return render_template('Esercizio2/Search_Name.html')
-  if Cerca == 'NomeCategoty':
+  if Cerca == 'NomeCategory':
     return render_template('Esercizio2/Search_Category.html', url='/static/images/plot.png')
   if Cerca == 'NomeNegozio':
     return render_template('Esercizio2/Search_Negozio.html', url1='/static/images/plot1.png')
@@ -96,6 +97,32 @@ def result_Category():
   # Visualizzare le informazione.
   df_Prodotti
   return render_template('Esercizio2/result_Category.html', nomiColonne = df_Prodotti.columns.values, dati = list(df_Prodotti.values.tolist()))
+
+@app.route('/result_Negozio', methods=['GET'])
+def result_Negozio():
+  # Collegamento al database
+  
+  conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', password='xxx123##', database='song.alfio')  
+  # Invio Query al database e ricezione informazioni
+  Nome_Negozio = request.args['NomeNegozio']
+  query = f"Select Store_Name, Count(*) as Numero_Ordini from Sales.Stores inner join Sales.Orders on Sales.Stores.Store_id = Sales.Orders.Store_id group by Sales.Orders.Store_id,Sales.Stores.Store_name having Store_name like '{Nome_Negozio}%'"
+  df_Prodotti = pd.read_sql(query,conn)
+  # Visualizzare le informazione.
+  df_Prodotti
+  return render_template('Esercizio2/result_Negozio.html', nomiColonne = df_Prodotti.columns.values, dati = list(df_Prodotti.values.tolist()))
+
+@app.route('/result_Brand', methods=['GET'])
+def result_Brand():
+  # Collegamento al database
+  
+  conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', password='xxx123##', database='song.alfio')  
+  # Invio Query al database e ricezione informazioni
+  Nome_Brand = request.args['NomeBrand']
+  query = f"Select Brand_Name, Count(*) as Numero_Prodotti from Production.Products inner join Production.Brands on Production.Brands.Brand_id = Production.Products.Brand_id group by Production.Products.Brand_id,Production.Brands.Brand_name having Brand_name like '{Nome_Brand}%'"
+  df_Prodotti = pd.read_sql(query,conn)
+  # Visualizzare le informazione.
+  df_Prodotti
+  return render_template('Esercizio2/result_Brand.html', nomiColonne = df_Prodotti.columns.values, dati = list(df_Prodotti.values.tolist()))
 
 
 if __name__ == '__main__':
