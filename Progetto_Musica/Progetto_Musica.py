@@ -19,18 +19,19 @@ CORS(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', password='xxx123##', database='song.alfio')  
+    
+    return jsonify(res)
 
-    query = 'Select Category_Name, Count(*) as Numero_Prodotti from Production.Products inner join Production.Categories on Production.Categories.Category_id = Production.Products.Category_id group by Production.Products.Category_id,Production.Categories.Category_name order by Numero_Prodotti desc'
+@app.route('/Sign_Up', methods=['GET'])
+def Sign_Up():
+    Nome_utente = request.args['Nome_utente']
+    Email = request.args['Email']
+    Password = request.args['Password']
+    Età = request.args['Età']
+    Sesso = request.args['Sesso']
+    conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', password='xxx123##', database='song.alfio')  
+    query=f"insert into utente(Nick_Name, email, password, Età, Sesso) values(‘{Nome_utente}’, ‘{Email}’,’{Password}’,’{Età}’,’{Sesso}’)"    
     df = pd.read_sql(query,conn)
-    names = list(df['Category_Name'])
-    values = list(df['Numero_Prodotti'])
-    fig1 = plt.figure(figsize=[16,16])
-    ax = plt.axes()
-    ax.bar(names, values)
-    fig1.autofmt_xdate(rotation=45) 
-    fig1.suptitle('Categorie di ogni prodotto', color='k')
-    plt.savefig('static/images/plot.png')
     
     return render_template('Progetto_Musica/Home.html', url='/static/images/plot.png',url1='/static/images/plot1.png', url2='/static/images/plot2.png')
 

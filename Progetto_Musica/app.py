@@ -17,7 +17,7 @@ conn = sql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', passwo
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/pandas/staff')
+@app.route('/pandzas/staff')
 def getstaff_pandas():
     data = request.args.get("store_name")
 
