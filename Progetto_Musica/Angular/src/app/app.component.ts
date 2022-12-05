@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   staffs!: any;
   loading!: Boolean;
-  url: string = "http://localhost:4200/pandas/staff";
+  url: string = "http://localhost:3000/pandas/staff";
 
   constructor(public http: HttpClient) {
     this.get(this.url);
