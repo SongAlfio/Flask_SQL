@@ -16,6 +16,10 @@ CORS(app)
 def Home():
   return render_template("Home.html")
 
+@app.route('/2', methods=['GET'])
+def Home2():
+  return render_template("Home2.html")
+
 #1. Registrazione
 @app.route('/Sign_Up', methods=['GET'])
 def Sign_Up():    
@@ -41,15 +45,17 @@ def Registrazione():
     
 
 #2. Login
+@app.route('/Login_Page', methods=['GET'])
+def Login_Page():    
+    return render_template("Login.html")
+
 @app.route('/Login', methods=['GET'])
 def Login():
-    Nome_utente = request.args['Nome_utente']
+    U_O_E = request.args['U_O_E']
     Password = request.args['Password']
-    query= f"select * from Musica.Login where Nome_utente='{Nome_utente}' and Password='{Password}'"
-    df2 = pd.read_sql(query, conn, params={"data": f'Nome_utente', "data": f'Password'})
-    res = list(df2.fillna("NaN").to_dict("index").values())
-    return jsonify(res)
-
+    query= f"select * from Musica.Utente where Nick_Name='{U_O_E}' or Email='{U_O_E}' and Password='{Password}'"
+    df2 = pd.read_sql(query, conn)
+    return render_template('Home2.html')
 
 #3. Modifica Informazioni Utente
 @app.route('/Modifica_Nome', methods=['GET'])
@@ -57,7 +63,7 @@ def Modifica_Nome():
     New_name = request.args['New_name']
     Email = request.args['Email']
     Password = request.args['Password']
-    query=f"update Musica.Utente set Nome_utente = '{New_name}' where Email='{Email}' and Password='{Password}'"
+    query=f"update Musica.Utente set Nick_Name = '{New_name}' where Email='{Email}' and Password='{Password}'"
     df3 = pd.read_sql(query,conn)
 
     return render_template('Progetto_Musica/Home.html', df3 = df3)
@@ -87,7 +93,7 @@ def Info_Utente():
     Nome_utente = request.args['Nome_utente']
     Email = request.args['Email']
     Password = request.args['Password']
-    query=f"delete from Musica.Utente where Nome_utente='{Nome_Utente}' and Email='{Email}' and Password ='{Password}'"
+    query=f"delete from Musica.Utente where Nick_Name='{Nome_Utente}' and Email='{Email}' and Password ='{Password}'"
     df4 = pd.read_sql(query,conn)
 
     return render_template('Progetto_Musica/Home.html', df4 = df4)

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   staffs!: any;
   loading!: Boolean;
-  url: string = "http://localhost:3000/pandas/staff";
+  url: string = "https://3245-songalfio-flasksql-j9ucuwz5uz7.ws-eu78.gitpod.io/";
 
   constructor(public http: HttpClient) {
     this.get(this.url);
