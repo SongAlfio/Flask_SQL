@@ -1,30 +1,23 @@
-<div class="container-fluid">
-  <input #box (keydown)="onKey(box.value)" class="form-control mt-3 mb-3">
-  <p *ngIf="loading">LOADING...</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>wyy Home</title> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+        
+  <div class="nav navbar-expand-lg"> 
+    <a href="/2" class="wyy" > <img id="wyy" src="neteasecloudmusic_93933 (1).png" alt="" style="display:inline"></a>
+    <ul> 
+        <li><a class="nav-link active" aria-current="page" href="#"><em>scopri musiche</em></a></li>
+        <li><a class="nav-link active" aria-current="page" href="#"><em>Songs</em></a></li>
+        <li><a class="nav-link active" aria-current="page" href="#"><em>Music album</em></a></li>
+    </ul> 
+    <img id="Utente" src="images.jpeg" alt="">
+</div> 
 
-  <table *ngIf="!loading && staffs.length >= 1" class="table table-striped">
-    <thead>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Active</th>
-      <th>Store ID</th>
-      <th>Manager ID</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let s of staffs">
-        <td>{{ s.staff_id }}</td>
-        <td>{{ s.first_name }}</td>
-        <td>{{ s.last_name }}</td>
-        <td>{{ s.email }}</td>
-        <td>{{ s.phone }}</td>
-        <td>{{ s.active }}</td>
-        <td>{{ s.store_id }}</td>
-        <td>{{ s.manager_id }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="alert alert-danger" *ngIf="staffs.length < 1">Error, no staff found in this store</div>
-</div>
+</body>
+</html>

@@ -55,7 +55,7 @@ def Login():
     Password = request.args['Password']
     query= f"select * from Musica.Utente where Nick_Name='{U_O_E}' or Email='{U_O_E}' and Password='{Password}'"
     df2 = pd.read_sql(query, conn)
-    return render_template('Home2.html')
+    return jsonify(list(df2.to_dict('index').values()))
 
 #3. Modifica Informazioni Utente
 @app.route('/Modifica_Nome', methods=['GET'])
@@ -66,7 +66,7 @@ def Modifica_Nome():
     query=f"update Musica.Utente set Nick_Name = '{New_name}' where Email='{Email}' and Password='{Password}'"
     df3 = pd.read_sql(query,conn)
 
-    return render_template('Progetto_Musica/Home.html', df3 = df3)
+    return jsonify(list(df3.to_dict('index').values()))
 
 @app.route('/Modifica_Email', methods=['GET'])
 def Modifica_Email():
@@ -76,7 +76,7 @@ def Modifica_Email():
     query=f"update Musica.Utente set Email= '{New_Email}' where where Email='{Email}' and Password='{Password}'"
     df3_1 = pd.read_sql(query,conn)
 
-    return render_template('Progetto_Musica/Home.html', df3_1 = df3_1)
+    return jsonify(list(df3_1.to_dict('index').values()))
 
 @app.route('/Modifica_Pass', methods=['GET'])
 def Modifica_Pass():
@@ -85,7 +85,7 @@ def Modifica_Pass():
     query=f"update Musica.Utente set Password= '{New_Password}' where Email='{Old_Email}'"
     df3_2 = pd.read_sql(query,conn)
 
-    return render_template('Progetto_Musica/Home.html', df3_2 = df3_2)
+    return jsonify(list(df3_2.to_dict('index').values()))
 
 #4. Visualizzazione info utente
 @app.route('/Info_Utente', methods=['GET'])
@@ -96,7 +96,7 @@ def Info_Utente():
     query=f"delete from Musica.Utente where Nick_Name='{Nome_Utente}' and Email='{Email}' and Password ='{Password}'"
     df4 = pd.read_sql(query,conn)
 
-    return render_template('Progetto_Musica/Home.html', df4 = df4)
+    return jsonify(list(df4.to_dict('index').values()))
 
 #5. Rimozione account:
 @app.route('/Delete_Account', methods=['GET'])
@@ -106,7 +106,7 @@ def Delete_Account():
     query=f"select Nome_Utente, Email, Password from Musica.Utente  where Email='{Email}' and Password='{Password}'"
     df5 = pd.read_sql(query,conn)
 
-    return render_template('Progetto_Musica/Home.html', df5 = df5)
+    return jsonify(list(df5.to_dict('index').values()))
 
 
 
