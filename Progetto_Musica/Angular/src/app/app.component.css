@@ -1,11 +1,8 @@
 li {list-style: none;}
-#wyy{
-    width: 300px;
-    display:inline;
-}
+
 #Utente{
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     margin-left: auto;
     margin-right: 0;
     float: right;
@@ -122,3 +119,7 @@ ul,li{ padding:0; margin:0;list-style:none;display:inline}
     top: -7px;
   }
 }
+
+
+
+

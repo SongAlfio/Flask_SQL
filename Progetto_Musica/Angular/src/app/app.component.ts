@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css','../styles.css','../../Home.css']
+  styleUrls: ['./app.component.css', '../styles.css']
 })
 export class AppComponent {
  
