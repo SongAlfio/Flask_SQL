@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { UtenteComponent } from './utente/utente.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
-
 const routes: Routes = [
   {
     path: 'Home',

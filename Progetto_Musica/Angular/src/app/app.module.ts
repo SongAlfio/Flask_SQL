@@ -2,20 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AppComponent } from './app.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { RouterModule } from '@angular/router';
 import { UtenteComponent } from './utente/utente.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent,
     UtenteComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
