@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { UtenteComponent } from './utente/utente.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { MusicistaComponent } from './musicista/musicista.component';
+
 const routes: Routes = [
   {
     path: 'Home',
@@ -30,6 +32,15 @@ const routes: Routes = [
   {
     path: 'Home',
     redirectTo: '/Sign_Up',
+    pathMatch: 'full'
+  },
+  {
+    path: 'Musicista',
+    component: MusicistaComponent
+  },
+  {
+    path: 'Home',
+    redirectTo: '/Musicista',
     pathMatch: 'full'
   },
 ];

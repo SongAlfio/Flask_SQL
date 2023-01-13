@@ -4,6 +4,7 @@ import pymssql as sql
 from flask_cors import CORS
 from os import getenv
 from dotenv import load_dotenv
+
 load_dotenv()
 
 
@@ -25,7 +26,7 @@ def Home2():
 def Sign_Up():    
     return render_template("Sign_Up.html")
 
-@app.route('/Registrazione', methods=['GET'])
+@app.route('/Registrazione', methods=['POST'])
 def Registrazione():    
 
     Nome_utente = request.args['Nome_utente']
@@ -33,7 +34,6 @@ def Registrazione():
     Password = request.args['Password']
     Età = request.args['Età']
     Sesso = request.args['Sesso']
-    df1 = pd.read_csv("static/csv/Musica.Utente.csv")
 
     cursor = conn.cursor()
     query = f"insert into Musica.Utente(Nick_Name, Email, Password, Età, Sesso) values('{Nome_utente}', '{Email}','{Password}','{Età}','{Sesso}')"
@@ -49,12 +49,13 @@ def Registrazione():
 def Login_Page():    
     return render_template("Login.html")
 
-@app.route('/Login', methods=['GET'])
+@app.route('/Login', methods=['POST'])
 def Login():
     U_O_E = request.args['U_O_E']
     Password = request.args['Password']
     query= f"select * from Musica.Utente where Nick_Name='{U_O_E}' or Email='{U_O_E}' and Password='{Password}'"
     df2 = pd.read_sql(query, conn)
+
     return jsonify(list(df2.to_dict('index').values()))
 
 #3. Modifica Informazioni Utente
@@ -103,12 +104,19 @@ def Info_Utente():
 def Delete_Account():
     New_Pass = request.args['New_Pass']
     Old_Email = request.args['Email']
-    query=f"select Nome_Utente, Email, Password from Musica.Utente  where Email='{Email}' and Password='{Password}'"
+    query=f"select Nick_Name, Email, Password from Musica.Utente  where Email='{Email}' and Password='{Password}'"
     df5 = pd.read_sql(query,conn)
 
     return jsonify(list(df5.to_dict('index').values()))
 
+#6. Search
+@app.route('/Search', methods=['GET'])
+def Search():
+    Search = request.args['Search']
+    query=f"select Nick_Name, Musica.Canzone.Nome from Musica.Utente inner join Musica.Ascolta on Musica.Utente.id = Musica.Ascolta.ID_Utente inner join Musica.Canzone on Musica.Canzone.id = Musica.Ascolta.ID_Canzone where Nick_Name = '{Search}'"
+    df6 = pd.read_sql(query,conn)
 
+    return jsonify(list(df6.to_dict('index').values()))
 
 
 if __name__ == '__main__':
