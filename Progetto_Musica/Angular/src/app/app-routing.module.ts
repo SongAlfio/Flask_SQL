@@ -5,6 +5,7 @@ import { UtenteComponent } from './utente/utente.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { MusicistaComponent } from './musicista/musicista.component';
+import { AlbumComponent } from './album/album.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
     redirectTo: '/Musicista',
     pathMatch: 'full'
   },
+
 ];
 
   @NgModule({

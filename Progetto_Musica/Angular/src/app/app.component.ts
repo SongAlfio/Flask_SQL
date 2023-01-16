@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css', '../styles.css']
 })
 export class AppComponent {
+  
 }
 
 export const API_URL = 'http://localhost:3245';

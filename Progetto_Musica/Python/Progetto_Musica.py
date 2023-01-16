@@ -41,7 +41,7 @@ def Registrazione():
     cursor.execute(query)
     conn.commit()
 
-    return 
+    return conn
     
 
 #2. Login
@@ -49,7 +49,7 @@ def Registrazione():
 def Login_Page():    
     return render_template("Login.html")
 
-@app.route('/Login', methods=['POST'])
+@app.route('/Login', methods=['GET','POST'])
 def Login():
     U_O_E = request.args['U_O_E']
     Password = request.args['Password']
@@ -94,7 +94,7 @@ def Info_Utente():
     Nome_utente = request.args['Nome_utente']
     Email = request.args['Email']
     Password = request.args['Password']
-    query=f"delete from Musica.Utente where Nick_Name='{Nome_Utente}' and Email='{Email}' and Password ='{Password}'"
+    query=f"Select * from Musica.Utente where Nick_Name='{Nome_Utente}' and Email='{Email}' and Password ='{Password}'"
     df4 = pd.read_sql(query,conn)
 
     return jsonify(list(df4.to_dict('index').values()))
@@ -117,6 +117,22 @@ def Search():
     df6 = pd.read_sql(query,conn)
 
     return jsonify(list(df6.to_dict('index').values()))
+
+
+@app.route('/Search2', methods=['GET'])
+def Search2():
+    query=f"select * from Musica.Canzone"
+    df6_1 = pd.read_sql(query,conn)
+
+    return jsonify(list(df6_1.to_dict('index').values()))
+
+#7. Tutti i musicisti
+@app.route('/Musicisti', methods=['GET'])
+def Musicisti():
+    query=f"select * from Musica.Utente where Musica.Utente.ID = (select Musica.Canta.ID_Utente from Musica.Canta) "
+    df7 = pd.read_sql(query,conn)
+
+    return jsonify(list(df7.to_dict('index').values()))
 
 
 if __name__ == '__main__':

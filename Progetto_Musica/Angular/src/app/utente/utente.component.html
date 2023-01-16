@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"> 
+
+
+
+<div>
 <style> 
 #rcorners2 {
     text-align: center;
@@ -11,13 +11,8 @@
     transform: translate(-50%);
 }
 </style>
-
-
-</head>
-<body>
-
-<form action="../../../../Python/Progetto_Musica.py/Login" method="post">
-    <div>
+<form method="GET">
+      <div>
         <a href="/" class="wyy"> 
             <img id="wyy" src="assets/neteasecloudmusic_93933(1).png" alt="">
         </a>
@@ -28,7 +23,7 @@
     <br>
     <b>Nome Utente/Email</b>
     <br>
-    <input type="text" name="U_O_E" required/>
+    <input type="text" name="U_O_E" [(ngModel)]="query" required/>
     <br>
     <a href="/Sign_Up" >Non hai ancora un account?</a>
 
@@ -36,10 +31,10 @@
     <br>
     <b>Password: </b>
     <br>
-    <input type="password" name="Password" required/>
+    <input type="password" name="Password" [(ngModel)]="query" required/>
     <br>  
-    <input type="submit" value="Log in">    
+    <input type="submit" value="Log in" (click)="ngOnInit()">    
     </div>
 </form>
-</body>
-</html>
+</div>
+

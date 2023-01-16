@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MusicistaComponent } from './musicista/musicista.component';
 import { NotificheComponent } from './notifiche/notifiche.component';
-
+import { AlbumComponent } from './album/album.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,9 @@ import { NotificheComponent } from './notifiche/notifiche.component';
     HomeComponent,
     CarouselComponent,
     MusicistaComponent,
-    NotificheComponent
+    NotificheComponent,
+    AlbumComponent,
+    FormsModule
   ],
   imports: [
     BrowserModule,
@@ -34,8 +37,9 @@ import { NotificheComponent } from './notifiche/notifiche.component';
         {path: 'Sign_Up', redirectTo: '/Sign_Up', pathMatch: 'full'},
         {path: 'Musicista', redirectTo: '/Musicista', pathMatch: 'full'},
         {path: 'Notifiche', redirectTo: '/Notifiche', pathMatch: 'full'},
+
       ]),
-      AppRoutingModule,
+      AppRoutingModule
     ],
   
   providers: [],
