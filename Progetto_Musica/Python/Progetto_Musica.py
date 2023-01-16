@@ -41,7 +41,7 @@ def Registrazione():
     cursor.execute(query)
     conn.commit()
 
-    return render_template("Home.html")
+    return 
     
 
 #2. Login
