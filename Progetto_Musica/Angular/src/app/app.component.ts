@@ -10,4 +10,3 @@ export class AppComponent {
   
 }
 
-export const API_URL = 'http://localhost:3245';

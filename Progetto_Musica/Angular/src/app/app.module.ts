@@ -11,7 +11,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MusicistaComponent } from './musicista/musicista.component';
 import { NotificheComponent } from './notifiche/notifiche.component';
 import { AlbumComponent } from './album/album.component';
-import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,6 @@ import { FormsModule } from '@angular/forms';
     MusicistaComponent,
     NotificheComponent,
     AlbumComponent,
-    FormsModule
   ],
   imports: [
     BrowserModule,

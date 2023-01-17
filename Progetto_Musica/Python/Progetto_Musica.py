@@ -13,13 +13,7 @@ conn = sql.connect(server='213.140.22.237\SQLEXPRESS', user='song.alfio', passwo
 app = Flask(__name__)
 CORS(app)
 #0. Home Page
-@app.route('/', methods=['GET'])
-def Home():
-  return render_template("Home.html")
 
-@app.route('/2', methods=['GET'])
-def Home2():
-  return render_template("Home2.html")
 
 #1. Registrazione
 @app.route('/Sign_Up', methods=['GET'])
@@ -32,11 +26,11 @@ def Registrazione():
     Nome_utente = request.args['Nome_utente']
     Email = request.args['Email']
     Password = request.args['Password']
-    Età = request.args['Età']
+    Eta = request.args['Eta']
     Sesso = request.args['Sesso']
 
     cursor = conn.cursor()
-    query = f"insert into Musica.Utente(Nick_Name, Email, Password, Età, Sesso) values('{Nome_utente}', '{Email}','{Password}','{Età}','{Sesso}')"
+    query = f"insert into Musica.Utente(Nick_Name, Email, Password, Eta, Sesso) values('{Nome_utente}', '{Email}','{Password}','{Eta}','{Sesso}')"
     
     cursor.execute(query)
     conn.commit()
@@ -129,7 +123,7 @@ def Search2():
 #7. Tutti i musicisti
 @app.route('/Musicisti', methods=['GET'])
 def Musicisti():
-    query=f"select * from Musica.Utente where Musica.Utente.ID = (select Musica.Canta.ID_Utente from Musica.Canta) "
+    query=f"select Nick_Name,Sesso,Eta from Musica.Utente where Musica.Utente.ID = (select Musica.Canta.ID_Utente from Musica.Canta) "
     df7 = pd.read_sql(query,conn)
 
     return jsonify(list(df7.to_dict('index').values()))

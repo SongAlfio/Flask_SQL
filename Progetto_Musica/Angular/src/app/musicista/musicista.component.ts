@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,13 +6,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './musicista.component.html',
   styleUrls: ['./musicista.component.css']
 })
-export class MusicistaComponent implements OnInit {
+export class MusicistaComponent  implements OnInit{
 
+  dataForHtml : any;
+
+  constructor(private http : HttpClient){}
   
-	constructor() {}
-
-
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+      this.http.get("https://3245-songalfio-flasksql-glre3qdzwx1.ws-eu82.gitpod.io/Musicisti")
+      .subscribe(this.getData)
   }
+
+  getData = (newData : any) =>
+  {
+      this.dataForHtml = newData;
+      console.log(newData);
+  }
+
+
 }

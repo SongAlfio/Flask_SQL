@@ -13,7 +13,7 @@ export class HomeComponent  implements OnInit{
   constructor(private http : HttpClient){}
   
   ngOnInit(): void {
-      this.http.get("https://3245-songalfio-flasksql-es64wx21h3x.ws-eu82.gitpod.io/Search2/")
+      this.http.get("https://3245-songalfio-flasksql-glre3qdzwx1.ws-eu82.gitpod.io/Search2")
       .subscribe(this.getData)
   }
 

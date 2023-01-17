@@ -1,4 +1,5 @@
-
-<div class="bg-dark">  
-
+<div class="container-fluid bg-primary">  
+    <div *ngFor="let Musicista of dataForHtml">
+        <div>{{Musicista.Sesso}} {{Musicista.Nick_Name}}</div>
+    </div>
 </div>
