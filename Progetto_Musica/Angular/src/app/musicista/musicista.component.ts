@@ -13,7 +13,7 @@ export class MusicistaComponent  implements OnInit{
   constructor(private http : HttpClient){}
   
   ngOnInit(): void {
-      this.http.get("https://3245-songalfio-flasksql-yexagvfb5g8.ws-eu83.gitpod.io/Musicisti")
+      this.http.get("https://3245-songalfio-flasksql-j3ybzf1i4ho.ws-eu83.gitpod.io/Musicisti")
       .subscribe(this.getData)
   }
 
