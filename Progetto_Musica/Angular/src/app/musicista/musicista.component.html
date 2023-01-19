@@ -1,5 +1,12 @@
 <div class="container-fluid bg-primary">  
     <div *ngFor="let Musicista of dataForHtml">
-        <div>{{Musicista.Sesso}} {{Musicista.Nick_Name}}</div>
+        <div>
+            Nome Musicista: {{Musicista.Nick_Name}}
+            <br>
+            Sesso: {{Musicista.Sesso}} 
+            <br>
+            Fans: {{Musicista.Fans}} 
+
+        </div>
     </div>
 </div>

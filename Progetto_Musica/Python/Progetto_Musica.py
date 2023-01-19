@@ -39,7 +39,7 @@ def Registrazione():
     
 
 #2. Login
-@app.route('/Login_Page', methods=['GET'])
+@app.route('/Login_Page', methods=['GET','POST'])
 def Login_Page():    
     return render_template("Login.html")
 
@@ -123,7 +123,7 @@ def Search2():
 #7. Tutti i musicisti
 @app.route('/Musicisti', methods=['GET'])
 def Musicisti():
-    query=f"select Nick_Name,Sesso,Eta from Musica.Utente where Musica.Utente.ID = (select Musica.Canta.ID_Utente from Musica.Canta) "
+    query=f"select count(ID_Seguito) as Fans, Nick_Name, Sesso, Eta from Musica.Utente inner join Musica.Follow on Musica.Follow.ID_Follower = Musica.Utente.ID where Musica.Utente.ID = (select Musica.Canta.ID_Utente from Musica.Canta) group by Nick_Name, Sesso, Eta"
     df7 = pd.read_sql(query,conn)
 
     return jsonify(list(df7.to_dict('index').values()))
