@@ -1,6 +1,3 @@
-
-
-
 <div>
 <style> 
 #rcorners2 {
@@ -11,8 +8,10 @@
     transform: translate(-50%);
 }
 </style>
-<form method="GET">
-      <div>
+<div [hidden] = "submitted">
+
+<form action = "../../../../Python/Progetto_Musica.py/Login" method = "post" enctype="multipart/form-data">  
+    <div>
         <a href="/" class="wyy"> 
             <img id="wyy" src="assets/neteasecloudmusic_93933(1).png" alt="">
         </a>
@@ -33,8 +32,15 @@
     <br>
     <input type="password" name="Password" required/>
     <br>  
-    <input type="submit" value="Log in" (click)="ngOnInit()">    
+    <input type="submit" value="Log in">    
     </div>
+    
 </form>
+
+<div *ngFor="let Utente of dataForHtml">
+    <p>{{Utente.Nick_Name}}</p>
+</div>
+
+</div>
 </div>
 

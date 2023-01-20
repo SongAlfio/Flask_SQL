@@ -15,7 +15,8 @@ export class HomeComponent  implements OnInit{
     ){}
   
   ngOnInit(): void {
-      this.http.get("https://3245-songalfio-flasksql-j3ybzf1i4ho.ws-eu83.gitpod.io/Search2")
+      this.http.get("https://3245-songalfio-flasksql-pkk6sj1zv9w.ws-eu83.gitpod.io/Search2")
+
       .subscribe(this.getData)
   }
 

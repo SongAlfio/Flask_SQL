@@ -4,7 +4,6 @@ import pymssql as sql
 from flask_cors import CORS
 from os import getenv
 from dotenv import load_dotenv
-
 load_dotenv()
 
 
@@ -45,12 +44,17 @@ def Login_Page():
 
 @app.route('/Login', methods=['GET','POST'])
 def Login():
-    U_O_E = request.args['U_O_E']
-    Password = request.args['Password']
+    U_O_E = request.form.get('U_O_E')
+    Password = request.form.get('Password')
     query= f"select * from Musica.Utente where Nick_Name='{U_O_E}' or Email='{U_O_E}' and Password='{Password}'"
-    df2 = pd.read_sql(query, conn)
+    
+    if len(query) > 0 :
+        df2 = pd.read_sql(query,conn)
 
-    return jsonify(list(df2.to_dict('index').values()))
+        return redirect('https://4200-songalfio-flasksql-pkk6sj1zv9w.ws-eu83.gitpod.io/Home', Response=jsonify(list(df2.to_dict('index').values())))
+    else:
+        return Error
+
 
 #3. Modifica Informazioni Utente
 @app.route('/Modifica_Nome', methods=['GET'])
