@@ -38,9 +38,39 @@ def Registrazione():
     
 
 #2. Login
-@app.route('/Login_Page', methods=['GET','POST'])
+@app.route('/Login_Page', methods=['POST'])
 def Login_Page():    
-    return render_template("Login.html")
+  email = request.args.get('email')
+  password = request.args.get('password')
+
+  data = {
+    "statusCode": 200,
+    "errorMessage": "",
+    "data": {}
+  }
+
+  # Controllo se nono stati passati tutti i parametri richiesti
+  if None not in [email, password]:
+    # Prendo le informazioni dell'utente
+    q = 'SELECT * FROM users WHERE email = %(e)s'
+    cursor = conn.cursor(as_dict=True)
+    cursor.execute(q, params={"e": email})
+    res = cursor.fetchall()
+
+    # Controllo se l'utente esiste
+    if len(res) < 1:
+      data["statusCode"] = 404
+      data["errorMessage"] = "No user was found with that email"
+    elif not (res[0]["password"] == password):
+      data["statusCode"] = 403
+      data["errorMessage"] = "Wrong password"
+    else:
+      data["data"] = res
+  else:
+    data['statusCode'] = 400
+    data['errorMessage'] = "No email or password provided"
+  
+  return jsonify(data)
 
 @app.route('/Login', methods=['GET','POST'])
 def Login():
@@ -127,7 +157,7 @@ def Search2():
 #7. Tutti i musicisti
 @app.route('/Musicisti', methods=['GET'])
 def Musicisti():
-    query=f"select count(ID_Seguito) as Fans, Nick_Name, Sesso, Eta from Musica.Utente inner join Musica.Follow on Musica.Follow.ID_Follower = Musica.Utente.ID where Musica.Utente.ID in (select Musica.Canta.ID_Utente from Musica.Canta) group by Nick_Name, Sesso, Eta"
+    query=f"select count(ID_Seguito) as Fans, Nick_Name, Sesso, Eta from Musica.Utente Full outer join Musica.Follow on Musica.Follow.ID_Follower = Musica.Utente.ID where Musica.Utente.ID in (select distinct Musica.Canta.ID_Utente from Musica.Canta) group by Nick_Name, Sesso, Eta"
     df7 = pd.read_sql(query,conn)
 
     return jsonify(list(df7.to_dict('index').values()))

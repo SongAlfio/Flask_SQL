@@ -8,10 +8,36 @@
     transform: translate(-50%);
 }
 </style>
-<div [hidden] = "submitted">
 
-<form action = "../../../../Python/Progetto_Musica.py/Login" method = "post" enctype="multipart/form-data">  
-    <div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="row">
+          <div class="form-group mb-3 col-md-12 col-sm-12">
+            <label class="form-check-labe" for="userid">Email</label>
+              <input type="email" class="form-control" formControlName="email" />
+          </div>
+
+          <div class="form-group mb-3 col-md-12 col-sm-12">
+            <label class="form-check-labe" for="password">Password</label>
+              <input type="password" class="form-control" formControlName="password" />
+          </div>
+        </div>
+
+        <div *ngIf="this.statusCode != 200" ngClass="mt-0">
+          <p class="text-danger">{{this.errorMessage}}</p>
+        </div>
+
+        <div class="text-end">
+          <button class="btn btn-primary btn-block" type="submit" [disabled]="!form.valid">Accedi</button>
+        </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      <div>
         <a href="/" class="wyy"> 
             <img id="wyy" src="assets/neteasecloudmusic_93933(1).png" alt="">
         </a>
@@ -37,10 +63,7 @@
     
 </form>
 
-<div *ngFor="let Utente of dataForHtml">
-    <p>{{Utente.Nick_Name}}</p>
-</div>
 
-</div>
+
 </div>
 

@@ -11,6 +11,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MusicistaComponent } from './musicista/musicista.component';
 import { NotificheComponent } from './notifiche/notifiche.component';
 import { AlbumComponent } from './album/album.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,11 +23,14 @@ import { AlbumComponent } from './album/album.component';
     MusicistaComponent,
     NotificheComponent,
     AlbumComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
       BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
       RouterModule.forRoot([
         {path: 'Utente', component: UtenteComponent},
         {path: 'Sign_Up', component: SignUpComponent},
