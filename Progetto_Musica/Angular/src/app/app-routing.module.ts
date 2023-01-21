@@ -44,6 +44,16 @@ const routes: Routes = [
     redirectTo: '/Musicista',
     pathMatch: 'full'
   },
+  {
+    path: 'Album',
+    component: AlbumComponent
+  },
+  {
+    path: 'Home',
+    redirectTo: '/Album',
+    pathMatch: 'full'
+  },
+
 
 ];
 

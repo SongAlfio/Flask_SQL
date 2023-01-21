@@ -31,10 +31,13 @@ import { AlbumComponent } from './album/album.component';
         {path: 'Sign_Up', component: SignUpComponent},
         {path: 'Musicista', component: MusicistaComponent},
         {path: 'Notifiche', component: NotificheComponent},
+        {path: 'Album', component: AlbumComponent},
+
         {path: 'Utente', redirectTo: '/Utente', pathMatch: 'full'},
         {path: 'Sign_Up', redirectTo: '/Sign_Up', pathMatch: 'full'},
         {path: 'Musicista', redirectTo: '/Musicista', pathMatch: 'full'},
         {path: 'Notifiche', redirectTo: '/Notifiche', pathMatch: 'full'},
+        {path: 'Album', redirectTo: '/Album', pathMatch: 'full'},
 
       ]),
       AppRoutingModule
@@ -50,4 +53,6 @@ export * from './app.component';
 export * from './sign-up/sign-up.component';
 export * from './utente/utente.component';
 export * from './musicista/musicista.component';
+
+
 
