@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-musicista',
   templateUrl: './musicista.component.html',
-  styleUrls: ['./musicista.component.css']
+  styleUrls: ['./musicista.component.css', '../../styles.css']
 })
 export class MusicistaComponent  implements OnInit{
 
