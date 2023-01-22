@@ -8,35 +8,7 @@
     transform: translate(-50%);
 }
 </style>
-
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <div class="row">
-          <div class="form-group mb-3 col-md-12 col-sm-12">
-            <label class="form-check-labe" for="userid">Email</label>
-              <input type="email" class="form-control" formControlName="email" />
-          </div>
-
-          <div class="form-group mb-3 col-md-12 col-sm-12">
-            <label class="form-check-labe" for="password">Password</label>
-              <input type="password" class="form-control" formControlName="password" />
-          </div>
-        </div>
-
-        <div *ngIf="this.statusCode != 200" ngClass="mt-0">
-          <p class="text-danger">{{this.errorMessage}}</p>
-        </div>
-
-        <div class="text-end">
-          <button class="btn btn-primary btn-block" type="submit" [disabled]="!form.valid">Accedi</button>
-        </div>
-      
-      
-      
-      
-      
-      
-      
-      
+<form action="http://127.0.0.1:3246/Login" method="post">
       <div>
         <a href="/" class="wyy"> 
             <img id="wyy" src="assets/neteasecloudmusic_93933(1).png" alt="">

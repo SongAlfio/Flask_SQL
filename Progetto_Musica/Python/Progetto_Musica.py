@@ -41,7 +41,9 @@ def Registrazione():
 @app.route('/Login_Page', methods=['POST'])
 def Login_Page():    
   email = request.args.get('email')
+  print(email)
   password = request.args.get('password')
+  print(password)
 
   data = {
     "statusCode": 200,
@@ -81,7 +83,7 @@ def Login():
     if len(query) > 0 :
         df2 = pd.read_sql(query,conn)
 
-        return redirect('https://4200-songalfio-flasksql-pkk6sj1zv9w.ws-eu83.gitpod.io/Home', Response=jsonify(list(df2.to_dict('index').values())))
+        return redirect('http://127.0.0.1:4200/Home', Response=jsonify(list(df2.to_dict('index').values())))
     else:
         return Error
 
@@ -163,5 +165,15 @@ def Musicisti():
     return jsonify(list(df7.to_dict('index').values()))
 
 
+#8. Tutti gli album
+@app.route('/Album', methods=['GET'])
+def Album():
+    query=f"select * from Musica.Album"
+    df8 = pd.read_sql(query,conn)
+
+    return jsonify(list(df8.to_dict('index').values()))
+
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3245, debug=True)
+    app.run(host='0.0.0.0', port=3246, debug=True)

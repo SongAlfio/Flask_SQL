@@ -1,4 +1,6 @@
-
+#card body{
+    border-radius: 25px;
+}
 
 .carousel-inner .carousel-item.active,
 .carousel-inner .carousel-item-next,

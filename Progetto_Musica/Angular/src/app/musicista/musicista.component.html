@@ -1,13 +1,24 @@
 <div class="container-fluid bg-primary">  
-    <div *ngFor="let Musicista of dataForHtml">
-        <div class="bg-info" style="height: auto;width:fit-content ">
-            Nome Musicista: {{Musicista.Nick_Name}}
-            <br>
-            Sesso: {{Musicista.Sesso}} 
-            <br>
-            Fans: {{Musicista.Fans}} 
 
-        </div>
-        <br>
-    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+          <th class="col-3 text-center">Musicista: </th>
+          <th class="col-3 text-center">Nome Musicista: </th>
+          <th class="col-3 text-center">Sesso: </th>
+          <th class="col-3 text-center">Fans: </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Musicista of dataForHtml; let i = index">
+            <td *ngIf="i == 0"><img src="https://i.ibb.co/8sGhNdJ/20230122193842-2.jpg" alt="20230122193842" border="0" height="100%" width="100%" class="rounded-circle"></td>
+            <td *ngIf="i == 1"><img src="https://i.ibb.co/MMyj3RJ/20221021205521.jpg" alt="20221021205521" border="0" height="100%" width="100%" class="rounded-circle"></td>
+            <td *ngIf="i == 2"><img src="https://i.ibb.co/nwfZrnC/20230122170605.jpg" alt="20230122170605" border="0" height="100%" width="100%" class="rounded-circle"></td>
+            <td *ngIf="i == 3"><img src="https://i.ibb.co/BgnxkdC/20230122170611.jpg" alt="20230122170611" border="0" height="100%" width="100%" class="rounded-circle"></td>
+            <td class="text-center">{{Musicista.Nick_Name}}</td>
+            <td class="text-center">{{Musicista.Sesso}}</td>
+            <td class="text-center">{{Musicista.Fans}}</td>
+          </tr>
+        </tbody>
+      </table>
 </div>

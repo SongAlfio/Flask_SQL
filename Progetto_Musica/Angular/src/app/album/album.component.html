@@ -1,6 +1,27 @@
-<div class="bg-dark">  
+<div class="container-fluid bg-info">  
+    <table class="table table-striped">
+        <thead>
+                      <th class="col-3">Coperta dell'album: </th>
+                      <th class="col-3">Nome album: </th>
+                      <th class="col-3">Data di pubblicazione: </th>
+                      <th class="col-3">Descrizione: </th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Album of dataForHtml; let i = index">
+                        <td *ngIf="i == 5"><img src="assets/安全着陆-安全自救手册封面.jpg" height="100%" width="100%"></td>
+                        <td *ngIf="i == 0"><img src="https://i.ibb.co/JjGSpf8/109951162989632203.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 3"><img src="https://i.ibb.co/DGZxbmh/109951168222024000.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 8"><img src="https://i.ibb.co/svWY02J/109951162846810441.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 2"><img src="https://i.ibb.co/qkMS7bN/109951163910067493.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 1"><img src="https://i.ibb.co/YPZWPLx/109951163369021239.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 6"><img src="https://i.ibb.co/QmHfnC9/109951165691468006.jpg"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 7"><img src="https://i.ibb.co/8KYp5Wn/109951168174179462.png"  height="100%" width="100%"></td>
+                        <td *ngIf="i == 4"><img src="https://i.ibb.co/S653z9f/109951168085216324.png"  height="100%" width="100%"></td>
 
-    <div class="container-fluid bg-info">
-        
-    </div>
+                        <td>{{Album.Nome}}</td>
+                        <td>{{Album.Data_Pubblicazione}}</td>
+                        <td>{{Album.Descrizione}}</td>
+                      </tr>
+        </tbody>
+    </table>
 </div>
