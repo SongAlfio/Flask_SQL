@@ -18,9 +18,12 @@ export class SignUpComponent {
   //Update Nome
 //updateName() {
 //  this.name.setValue('Nancy');
-//}
+//}  
+
+
 onSubmit() {
   // TODO: Use EventEmitter with form value
-  console.warn(this.profileForm.value);
+  console.log(this.profileForm.value);
+
 }
 }

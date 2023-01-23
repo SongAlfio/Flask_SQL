@@ -15,7 +15,7 @@ export class SongComponent implements OnInit{
     ){}
   
   ngOnInit(): void {
-      this.http.get("https://3246-songalfio-flasksql-x2vaxjn8uet.ws-eu83.gitpod.io/Song")
+      this.http.get("https://3246-songalfio-flasksql-pz8ff5q78w8.ws-eu83.gitpod.io/Song")
 
       .subscribe(this.getData)
   }

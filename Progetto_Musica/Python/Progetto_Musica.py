@@ -22,15 +22,19 @@ def Sign_Up():
 @app.route('/Registrazione', methods=['GET','POST'])
 def Registrazione():    
 
-    Nome_utente = request.args['Nome_utente']
+    Nome_utente = request.form.get('Nome_utente')
+    print(Nome_utente)
+
     Email = request.args['Email']
+    print(Email)
     Password = request.args['Password']
-    Eta = request.args['Eta']
+    Eta = request.args['Età']
     Sesso = request.args['Sesso']
 
-    cursor = conn.cursor()
+
     query = f"insert into Musica.Utente(Nick_Name, Email, Password, Eta, Sesso) values('{Nome_utente}', '{Email}','{Password}','{Eta}','{Sesso}')"
-    
+    print(query)
+    cursor = conn.cursor()
     cursor.execute(query)
     conn.commit()
 
@@ -178,8 +182,6 @@ def Album():
 def Song():
     query=f"select * from Musica.Canzone inner join Musica.Canta on Musica.Canta.ID_Canzone = Musica.Canzone.ID inner join Musica.Utente on Musica.Canta.ID_Utente = Musica.Utente.ID"
     df9 = pd.read_sql(query,conn)
-    import json
-
 
     return jsonify(list(df9.to_dict('index').values()))
 
