@@ -6,6 +6,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { MusicistaComponent } from './musicista/musicista.component';
 import { AlbumComponent } from './album/album.component';
+import { SongComponent } from './song/song.component';
+import { AddSongComponent } from './add-song/add-song.component';
 
 const routes: Routes = [
   {
@@ -53,7 +55,24 @@ const routes: Routes = [
     redirectTo: '/Album',
     pathMatch: 'full'
   },
-
+  {
+    path: 'Song',
+    component: SongComponent
+  },
+  {
+    path: 'Home',
+    redirectTo: '/Song',
+    pathMatch: 'full'
+  },
+  {
+    path: 'Add_Song',
+    component: AddSongComponent
+  },
+  {
+    path: 'Home',
+    redirectTo: '/Add_Song',
+    pathMatch: 'full'
+  },
 
 ];
 

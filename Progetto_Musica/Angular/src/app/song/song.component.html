@@ -1,0 +1,22 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div class="container-fluid bg-info">  
+    <table class="table table-striped">
+        <thead>
+                      <th class="col-3" style="font-size: 20px;">Nome Canzone: </th>
+                      <th class="col-3" style="font-size: 20px;">Lunghezza (in secondi): </th>
+                      <th class="col-3" style="font-size: 20px;">Nome Musicista: </th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Song of dataForHtml">
+
+                        <td>{{Song.Nome}}</td>
+                        <td>{{Song.Lunghezza}}</td>
+                        <td>{{Song.Nick_Name}}</td>
+
+                      </tr>
+        </tbody>
+    </table>
+</div>
+

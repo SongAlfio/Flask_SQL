@@ -1,78 +1,12 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-    <a href="/"><img class="wyy" src="assets/neteasecloudmusic_93933(1).png" style="width: 100px; display: inline;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            <i class="fa fa-home"></i>
-            Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Musicista">
-            <i class="fa fa-envelope-o">
-            </i>
-            Musicista
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="Songs">
-            <i class="fa fa-envelope-o">
-            </i>
-            Songs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Album">
-            <i class="fa fa-envelope-o">
-            </i>
-            Music Album
-          </a>
-        </li>
-
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fa fa-bell">
-              <span class="badge badge-info">11</span>
-            </i>
-            <p class="m-auto" style="font-size: 20px;">Notifiche</p>
-
-          </a>
-        </li>
-
-      </ul>
-
-      <form class="form-inline my-2 my-lg-0" action="" method="post">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-
-
-
-      <a class="button" routerLink="/Utente"><img id="Utente" src="assets/User.png" alt=""></a>
-
-
-
-
-    </div>
-  </nav>
-
+<app-nav-bar></app-nav-bar>
 
 <div class="container-fluid bg-info">  
     <table class="table table-striped">
         <thead>
-                      <th class="col-3">Coperta dell'album: </th>
-                      <th class="col-3">Nome album: </th>
-                      <th class="col-3">Data di pubblicazione: </th>
-                      <th class="col-3">Descrizione: </th>
+                      <th class="col-3" style = "font-size: 30px">Coperta dell'album: </th>
+                      <th class="col-3" style = "font-size: 30px">Nome album: </th>
+                      <th class="col-3" style = "font-size: 30px">Data di pubblicazione: </th>
+                      <th class="col-3" style = "font-size: 30px">Descrizione: </th>
                     </thead>
                     <tbody>
                       <tr *ngFor="let Album of dataForHtml; let i = index">

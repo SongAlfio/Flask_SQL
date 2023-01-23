@@ -12,6 +12,10 @@ import { MusicistaComponent } from './musicista/musicista.component';
 import { NotificheComponent } from './notifiche/notifiche.component';
 import { AlbumComponent } from './album/album.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SongComponent } from './song/song.component';
+import { AddSongComponent } from './add-song/add-song.component';
+
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MusicistaComponent,
     NotificheComponent,
     AlbumComponent,
+    SongComponent,
+    AddSongComponent,
+    NavBarComponent,
 
   ],
   imports: [
@@ -37,12 +44,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         {path: 'Musicista', component: MusicistaComponent},
         {path: 'Notifiche', component: NotificheComponent},
         {path: 'Album', component: AlbumComponent},
+        {path: 'Song', component: SongComponent},
+        {path: 'Add_Song', component: AddSongComponent},
 
         {path: 'Utente', redirectTo: '/Utente', pathMatch: 'full'},
         {path: 'Sign_Up', redirectTo: '/Sign_Up', pathMatch: 'full'},
         {path: 'Musicista', redirectTo: '/Musicista', pathMatch: 'full'},
         {path: 'Notifiche', redirectTo: '/Notifiche', pathMatch: 'full'},
         {path: 'Album', redirectTo: '/Album', pathMatch: 'full'},
+        {path: 'Song', redirectTo: '/Song', pathMatch: 'full'},
+        {path: 'Add_Song', redirectTo: '/Add_Song', pathMatch: 'full'},
 
       ]),
       AppRoutingModule

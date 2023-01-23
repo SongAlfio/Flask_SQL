@@ -19,7 +19,7 @@ CORS(app)
 def Sign_Up():    
     return render_template("Sign_Up.html")
 
-@app.route('/Registrazione', methods=['POST'])
+@app.route('/Registrazione', methods=['GET','POST'])
 def Registrazione():    
 
     Nome_utente = request.args['Nome_utente']
@@ -165,7 +165,7 @@ def Musicisti():
     return jsonify(list(df7.to_dict('index').values()))
 
 
-#8. Tutti gli album
+#8. Tutte le album
 @app.route('/Album', methods=['GET'])
 def Album():
     query=f"select * from Musica.Album"
@@ -173,6 +173,28 @@ def Album():
 
     return jsonify(list(df8.to_dict('index').values()))
 
+#9. Tutte le canzoni
+@app.route('/Song', methods=['GET'])
+def Song():
+    query=f"select * from Musica.Canzone inner join Musica.Canta on Musica.Canta.ID_Canzone = Musica.Canzone.ID inner join Musica.Utente on Musica.Canta.ID_Utente = Musica.Utente.ID"
+    df9 = pd.read_sql(query,conn)
+    import json
+
+
+    return jsonify(list(df9.to_dict('index').values()))
+
+#10. Aggiungere le canzoni
+@app.route('/Add_Song', methods=['GET'])
+def Add_Song():
+    Nome = request.args.get('Nome')
+    Tipo = request.args.get('Tipo')
+    VIP = request.args.get('VIP')
+
+    query=f"Insert Into Musica.Canzone(Nome,Tipo,VIP) values('{Nome}','{Tipo}','{VIP}')"
+    cursor.execute(query)
+    conn.commit()
+
+    return conn
 
 
 if __name__ == '__main__':

@@ -12,33 +12,39 @@
 }
 </style>
 
-    <form action="../../../../Python/Progetto_Musica.py/Registrazione" method="post">
+<form action="../../../../Python/Progetto_Musica.py/Registrazione" method="get" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
         <a href="/" class="wyy" style="height: 200px;width: 200px;">
             <img id="wyy" src="assets/neteasecloudmusic_93933(1).png" alt="">
         </a>
     <p id="rcorners2">
+    <!--
+        Update Nome
+        <button type="button" (click)="updateName()">Update Name</button>
+    -->
     <b>Sign UP</b>
     <br>
     <b>Come ti possiamo chiamare? </b>
     <br>
-    <input type="text" name="Nome_utente" required/>
+    <input type="text" name="Nome_utente" formControlName="Nome_utente" required>
     <br>
     <b>Email:</b>
     <br>
-    <input type="email"name="Email" required/>
+    <input type="email" name="Email" formControlName="Email" required>
     <br>
     <b>Password: </b>
     <br>
-    <input type="password" name="Password" required/>
+    <input type="password" name="Password" formControlName="Password" required>
     <br>  
     <b>Il tuo giorno di nascita:</b>
     <br>
-    <input type="date" name="Età" required/>
+    <input type="date" name="Età" formControlName="Età" required>
     <br>
     <b>Il tuo sesso:</b>&nbsp;&nbsp;&nbsp;
-    <label for="Maschio"> Maschio</label><input type="radio" name="Sesso" value="Maschio" id="Maschio" required/>    &nbsp;&nbsp;&nbsp; <label for="Femmina">Femmina</label><input type="radio" name="Sesso" value="Femmina" id="Femmina" required/>  <br> &nbsp;&nbsp;&nbsp;  <label for="Nessuno dei entrambi">Nessuno dei entrambi</label><input type="radio" name="Sesso" value="Nessuno dei entrambi" id="Nessuno dei entrambi" required/>   &nbsp;&nbsp;&nbsp;  <label for="Non voglio dire">Non voglio dire</label><input type="radio" name="Sesso" value="Non voglio dire" id="Non voglio dire" required/>
+    <label for="Maschio"> Maschio</label><input type="radio" name="Sesso" value="Maschio" id="Maschio" formControlName="Sesso" required/>    &nbsp;&nbsp;&nbsp; <label for="Femmina">Femmina</label><input type="radio" name="Sesso" value="Femmina" id="Femmina" formControlName="Sesso" required/>  <br> &nbsp;&nbsp;&nbsp;  <label for="Nessuno dei entrambi">Nessuno dei entrambi</label><input type="radio" name="Sesso" value="Nessuno dei entrambi" id="Nessuno dei entrambi" required/>   &nbsp;&nbsp;&nbsp;  <label for="Non voglio dire">Non voglio dire</label><input type="radio" name="Sesso" value="Non voglio dire" id="Non voglio dire" required/>
     <br>
-    <input type="submit" value="Sign up">
-    </form>
+    <button type="submit" value="Sign up" [disabled]="!profileForm.valid">Sign up</button>
+    
+</form>
+
 </div>
 

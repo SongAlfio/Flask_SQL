@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css', '../../styles.css']
+  selector: 'app-song',
+  templateUrl: './song.component.html',
+  styleUrls: ['./song.component.css']
 })
-export class HomeComponent  implements OnInit{
+export class SongComponent implements OnInit{
 
   dataForHtml : any;
 
@@ -15,7 +15,7 @@ export class HomeComponent  implements OnInit{
     ){}
   
   ngOnInit(): void {
-      this.http.get("http://127.0.0.1:3246/Search2")
+      this.http.get("https://3246-songalfio-flasksql-x2vaxjn8uet.ws-eu83.gitpod.io/Song")
 
       .subscribe(this.getData)
   }
@@ -25,6 +25,5 @@ export class HomeComponent  implements OnInit{
       this.dataForHtml = newData;
       console.log(newData);
   }
-
 
 }
